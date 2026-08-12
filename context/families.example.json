@@ -1,0 +1,92 @@
+{
+ "_comment": "Job families this resume system targets. One resume per family. `lead` is the mass-apply title; its JDs count 2x.",
+ "families": {
+  "R1": {
+   "name": "Strategy / Business Analyst",
+   "lead": "business analyst",
+   "titles": [
+    "business analyst",
+    "strategy intern",
+    "strategy analyst",
+    "strategy and operations",
+    "strategy & operations",
+    "strategy and analytics",
+    "corporate strategy",
+    "business strategy",
+    "consultant intern",
+    "consulting intern",
+    "associate consultant",
+    "summer associate",
+    "chief of staff",
+    "founders associate",
+    "founder's associate",
+    "founders office",
+    "founder's office",
+    "business operations",
+    "bizops",
+    "special projects",
+    "strategic initiatives",
+    "operations intern",
+    "program manager",
+    "project manager",
+    "supply chain",
+    "strategic finance"
+   ]
+  },
+  "R2": {
+   "name": "Product",
+   "lead": "product manager",
+   "titles": [
+    "product manager",
+    "product management",
+    "associate product manager",
+    "apm intern",
+    "product intern",
+    "technical product",
+    "technical program",
+    "product development",
+    "associate product builder",
+    "product operations",
+    "product analyst",
+    "product strategy",
+    "rotational product",
+    "product owner",
+    "growth product",
+    "product research",
+    "digital product",
+    "platform product"
+   ]
+  },
+  "R3": {
+   "name": "GTM / Commercial",
+   "lead": "business development",
+   "titles": [
+    "go-to-market",
+    "gtm strategy",
+    "gtm intern",
+    "business development",
+    "bd intern",
+    "partnerships",
+    "strategic partnerships",
+    "growth intern",
+    "growth strategy",
+    "growth operations",
+    "revenue operations",
+    "revops",
+    "sales strategy",
+    "sales operations",
+    "commercial intern",
+    "commercial strategy",
+    "capture intern",
+    "deployment strategist",
+    "forward deployed",
+    "implementation strategist",
+    "implementation consultant",
+    "solutions intern",
+    "solutions consultant",
+    "customer success",
+    "field operations"
+   ]
+  }
+ }
+}

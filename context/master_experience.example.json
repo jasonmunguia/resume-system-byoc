@@ -1,0 +1,25 @@
+{
+ "_comment": "Example inventory. Copy to master_experience.json and replace with your own.",
+ "bullets": [
+  {
+   "org": "ExampleCo",
+   "text": "Built SQL scoring model from call and property data to rank 650+ leads by equity and margin, then delivered deal memos that replaced 4 partners gut-based decisions, cutting decision time by 17 hours",
+   "state": "complete"
+  },
+  {
+   "org": "ExampleCo",
+   "text": "Managed relationships with marketing leads at 4 Fortune 500 subsidiaries, trained their teams, and presented client-informed product recommendations to the CTO, increasing renewals 15%",
+   "state": "complete"
+  },
+  {
+   "org": "StartupX",
+   "text": "Ran pricing analysis before the Series A",
+   "state": "incomplete"
+  },
+  {
+   "org": "StartupX",
+   "text": "Waddle, Avea",
+   "state": "scratchpad"
+  }
+ ]
+}

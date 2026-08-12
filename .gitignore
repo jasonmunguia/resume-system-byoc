@@ -1,0 +1,20 @@
+# Personal — the master experience inventory is someone's actual resume.
+# Ship master_experience.example.json instead.
+context/master_experience.json
+
+# Third-party job-description text, cached from ATS APIs. Regenerable with
+# `python3 scripts/boards.py --family R1` — no reason to redistribute employers'
+# posting copy, and it is ~1MB of churn.
+data/R1/
+data/R2/
+data/R3/
+
+# Generated artifacts (contain the personal bullet audit)
+data/_report.json
+data/charts.md
+data/report_*.md
+
+__pycache__/
+.pytest_cache/
+*.pyc
+.DS_Store

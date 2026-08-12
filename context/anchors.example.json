@@ -1,0 +1,12 @@
+{
+ "_comment": "Traits you have decided matter, independent of what a corpus measures. Marked with a star in the chart so a measured ranking never silently drops one.",
+ "anchors": [
+  "Analytical skills",
+  "Communication (written & verbal)",
+  "Influence / persuasion",
+  "Leadership / initiative",
+  "Problem solving",
+  "Stakeholder management",
+  "Teamwork / collaboration"
+ ]
+}
