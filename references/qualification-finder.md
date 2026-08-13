@@ -69,6 +69,57 @@ Below 10 → no table, print what's missing and how many more are needed.
   one on every resume (HHH p.27).
 - **Duty verbs are not for counting.** They're vocabulary for stage 2.
 
+## Optional output — deriving a job-cycle view
+
+The ranked trait table says WHICH qualifications to prove. It doesn't say WHAT
+KIND of activity proves each one — that's a different, complementary view,
+rendered by `scripts/chart.py`'s `job_cycle_block()` when a family has an entry
+in `JOB_CYCLES`. R1 (Strategy/Business Analyst) has one; other families don't
+yet.
+
+A job cycle is a hand-curated sequence of 5–7 stages that most postings in a
+family functionally imply, even though no single posting states it as a
+checklist. It exists because a trait like "Problem solving" or "Cross-functional
+partnering" is an abstraction — a candidate reading it can't immediately picture
+what activity would prove it. A stage phrased as "diagnose the real problem, not
+what you're told is wrong" is concrete enough to recognize in your own
+experience; the trait name alone isn't.
+
+### How to derive one for a new family
+
+1. Read the family's `duties` corpus — the "what you'll do" sections captured
+   alongside qualifications (see Procedure above). Look for a recurring
+   **functional sequence**, not identical wording — different postings
+   describe the same underlying stage in different words.
+2. Name each stage as a **verb phrase** ("Diagnose the real problem," not
+   "Problem diagnosis"). It should read as something you *did*.
+3. Write one or two sentences per stage on what it's *for* — why the step
+   exists, what skipping it costs.
+4. Map each stage to the **one** trait from the ranked table it most directly
+   evidences. A stage maps to a trait, not the reverse — don't force every
+   high-demand trait into the cycle if it doesn't correspond to a discrete
+   step.
+5. **Hand-pick 1–2 real, verbatim quotes per stage. Do not regex-select them.**
+   Auto-classifying "which stage does this duty line belong to" is unreliable
+   in the same way the qualification lexicon itself needed four rounds of
+   false-positive/negative fixes in one session (Stakeholder management missed
+   "presented X to the CTO," Communication missed past tense, Leadership missed
+   the bare verb "led," Coachability couldn't tell mentoring others from being
+   mentored — see `scripts/config.py`'s inline comments for the specifics).
+   Detecting *whether* a line contains a concept is hard enough with regex;
+   detecting *which step of a multi-stage process* it describes requires
+   understanding the line's role in a sequence, which is a different and
+   harder problem. Curate by reading.
+6. If a trait runs through every stage rather than belonging to one step (R1's
+   example: Coachability — being mentored isn't a discrete phase, it's a
+   constant background condition across an internship), file it as the cycle's
+   **undercurrent** instead of forcing it into the numbered sequence.
+7. Add the entry to `JOB_CYCLES` in `scripts/chart.py`, following the existing
+   `"R1"` structure exactly. `job_cycle_block()` already renders any family
+   with an entry — no code changes needed beyond adding the data. A family
+   without an entry gets an explicit "not yet curated" note pointing back here,
+   not silence.
+
 ## Failure modes seen in practice
 
 | Symptom | Cause | Fix |

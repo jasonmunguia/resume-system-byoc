@@ -14,6 +14,18 @@ Four sub-skills, run in order:
 | # | Sub-skill | Input → Output |
 |---|---|---|
 | 1 | **qualification-finder** — `references/qualification-finder.md` | Job family + target companies → ranked qualification table + verbatim duty language |
+
+Stage 1 has an optional companion output: a **job-cycle view** — the ranked
+table says which traits to prove, this says what kind of activity proves each
+one, as a 5–7 stage sequence hand-curated from the family's real duty language
+(`scripts/chart.py`'s `JOB_CYCLES`, rendered by `job_cycle_block()`). R1 has
+one built; building it for a new family is a documented recipe, not a rebuild
+— see "Optional output — deriving a job-cycle view" in
+`references/qualification-finder.md`. Deliberately hand-curated, not
+regex-derived: detecting which stage of a process a duty line belongs to is a
+harder problem than detecting whether it contains a concept, and the
+qualification lexicon itself needed four rounds of false-positive/negative
+fixes for the easier problem.
 | 2 | **evidence-mapper** — `references/evidence-mapper.md` | Qualifications + master experience inventory → qualification↔evidence map + allocation plan |
 | 3 | **bullet-creator** — `references/bullet-creator.md` | Allocation plan → finished bullets, one experience at a time |
 | 4 | **resume-auditor** — `references/resume-auditor.md` | Finished resume + qualifications → coverage verdict + keep/cut ranking |

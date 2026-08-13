@@ -59,12 +59,29 @@ FAMILIES = {
 # ---------------------------------------------------------------------------
 LEXICON = {
     # the seven anchors from context/anchors.json
-    "Communication (written & verbal)": r"communicat|verbal and written|written and verbal|articulate|present(?:ing)? to",
-    "Stakeholder management":           r"stakeholder|senior leader|executive (?:audience|presence|stakeholder)|client relationship|C-suite",
+    # v1 required "presenting"/"present" immediately adjacent to "to" and missed
+    # the past tense entirely. Real resume phrasing puts the object in between
+    # ("presented RECOMMENDATIONS to the CTO"), so this under-reported the #1
+    # highest-demand R1 trait on a resume that has real evidence for it.
+    "Communication (written & verbal)": r"communicat|verbal and written|written and verbal|articulate|"
+                                        r"present(?:ed|ing)?\b.{0,60}\bto\b|\bbriefed\b",
+    # Resumes name the PERSON, postings name the ABSTRACTION. An early version
+    # matched only "stakeholder"/"senior leader" and so missed "presented to the
+    # CTO", "marketing leaders", and "executives from X" — the three most common
+    # ways a bullet actually expresses this. It under-reported the trait in every
+    # run until a real resume exposed it.
+    "Stakeholder management":           r"stakeholder|senior leader(?:ship)?|executive|C-suite|\b(?:CTO|CEO|CFO|COO|CMO|CIO|VP)\b|"
+                                        r"client relationship|decision[- ]maker|founders?\b|partners?\b|"
+                                        r"(?:marketing|business|department|functional|industry|team) leaders?\b|leaders? at\b",
     "Influence / persuasion":           r"influenc|persuas|buy[- ]in|drive alignment|build consensus|negotiat",
     "Analytical skills":                r"analytical|analysis|analyz|quantitative|data[- ]driven",
     "Problem solving":                  r"problem[- ]solv|solve complex|structured thinking|first principles|troubleshoot",
-    "Leadership / initiative":          r"leadership|self[- ]start|take initiative|ownership|owner mentality|drive projects|player[- ]coach",
+    # "led"/"leading" as verbs are the most common way bullets actually express
+    # this trait ("led networking workshops"), but the noun-only regex missed
+    # them. Guard against "led to" (a causal connector, not a leadership claim,
+    # e.g. "which led to a 15% increase") with a negative lookahead.
+    "Leadership / initiative":          r"leadership|self[- ]start|take initiative|ownership|owner mentality|"
+                                        r"drive projects|player[- ]coach|\bled\b(?!\s+to\b)|\bleading\b(?!\s+to\b)",
     "Teamwork / collaboration":         r"teamwork|collaborat|work (?:well )?(?:with|across) (?:others|teams)|team player",
     # tools
     "Excel / spreadsheet modeling":     r"\bexcel\b|spreadsheet|pivot table|vlookup|financial model",
@@ -91,7 +108,15 @@ LEXICON = {
     "Sales / pipeline / GTM":           r"\bsales\b|pipeline|quota|prospect|lead gen|go[- ]to[- ]market|\bGTM\b|business development",
     "Product sense / user empathy":     r"product sense|user (?:empathy|needs)|customer problem|product intuition|user experience",
     "Technical aptitude":               r"technical (?:aptitude|background|concepts|specification)|engineering (?:background|team)|\bAPI\b",
-    "Coachability":                     r"takes? (?:direction|feedback)|receptive to feedback|open to criticism|mentorship|coachab",
+    # "Mentor" is directionally ambiguous — "created a mentor ecosystem" means
+    # the candidate mentors OTHERS (a leadership act), not that the candidate
+    # takes direction from someone else (what this trait actually measures, per
+    # HHH's own bucket 4: "takes direction and criticism"). A bare "mentor" or
+    # "mentorship" match can't tell those apart, so only match constructions
+    # where direction is unambiguous — the candidate is the one BEING mentored.
+    "Coachability":                     r"takes? (?:direction|feedback)|receptive to feedback|open to criticism|"
+                                        r"coachab|under (?:the )?mentorship|received mentorship|mentored by|"
+                                        r"with mentorship from",
 }
 
 # ---------------------------------------------------------------------------

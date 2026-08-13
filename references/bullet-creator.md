@@ -199,6 +199,18 @@ How many clients or accounts? How large was the team? What happened before vs.
 after? Why did the company care? What did you personally build? What decision
 did your analysis change?*
 
+## Punctuation
+
+No semicolons, no em dashes. Both read as inconsistent across fonts and ATS
+parsers, and both are easy to avoid: a comma plus an infinitive clause
+("...to cut R&D time and accelerate deployments") does the same connective job
+a dash would, without the character.
+
+A relative clause ("that...") often works too, but check what it actually
+attaches to. "And more that cut R&D time" reads as if "more" is the thing that
+cut R&D time, not the deal list. If a comma-plus-infinitive removes that
+ambiguity, prefer it.
+
 ## Compression order
 
 Delete in roughly this order — never randomly:

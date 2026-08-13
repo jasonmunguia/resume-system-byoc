@@ -277,3 +277,63 @@ def test_palantir_what_we_value_require_headings():
 def test_core_responsibilities_variant_is_duties():
     sec = sectionize("Core Responsibilities\nOwn the agile backlog for a squad today")
     assert sec["duty"] and not sec["qual"]
+
+
+# --- lexicon false negatives ------------------------------------------------
+@pytest.mark.parametrize("bullet", [
+    "presented client-informed product recommendations to the CTO",
+    "Managed relationships with marketing leaders at Fortune Global 500 subsidiaries",
+    "Negotiated deals with executives from Little Caesars and Honeywell",
+    "delivered deal memos to replace 4 partners' gut-based decisions",
+    "convincing co-founders to pivot product strategy",
+])
+def test_stakeholder_management_matches_how_resumes_actually_phrase_it(bullet):
+    """Postings say 'stakeholder'; resumes name the person. Matching only the
+    abstraction under-reported this trait on every real bullet."""
+    from pipeline import COMPILED
+    assert COMPILED["Stakeholder management"].search(bullet), bullet
+
+
+def test_communication_matches_presented_with_intervening_object():
+    """v0: 'present(?:ing)? to' required immediate adjacency and missed the past
+    tense, so 'presented recommendations to the CTO' — the actual shape of most
+    resume phrasing — never matched. Under-reported R1's #1 demand trait."""
+    from pipeline import COMPILED
+    assert COMPILED["Communication (written & verbal)"].search(
+        "presented client-informed product recommendations to the CTO")
+    assert COMPILED["Communication (written & verbal)"].search(
+        "presenting quarterly results to the board")
+    assert COMPILED["Communication (written & verbal)"].search(
+        "briefed leadership weekly on pipeline status")
+
+
+def test_leadership_matches_led_verb_but_not_led_to():
+    """'led' as a verb ('led networking workshops') is the natural way bullets
+    express this trait; the noun-only regex missed it. 'led to' is a causal
+    connector, not a leadership claim, and must not match."""
+    from pipeline import COMPILED
+    rx = COMPILED["Leadership / initiative"]
+    assert rx.search("led networking workshops for 23 members")
+    assert rx.search("leading a cross-functional pilot")
+    assert not rx.search("which led to a 15% increase in renewals")
+
+
+# NOTE: an earlier version of this test asserted bare "mentor"/"mentored"
+# should match Coachability. That assertion WAS the bug, caught by the
+# candidate: "created an industry-mentor ecosystem" means the candidate
+# mentors OTHERS (a leadership act), not that the candidate takes direction
+# well (what this trait actually measures, per HHH's own bucket 4). Replaced
+# by the directional test below.
+
+def test_coachability_is_directional_not_just_the_word_mentor():
+    """'Mentor' alone doesn't say who's coaching whom. Only unambiguous
+    being-mentored constructions should match Coachability; mentoring others
+    should score as Leadership instead."""
+    from pipeline import COMPILED
+    coach = COMPILED["Coachability"]
+    lead = COMPILED["Leadership / initiative"]
+    give_mentorship = "led networking workshops and created an industry-mentor ecosystem for 23 members"
+    receive_mentorship = "grew under the mentorship of a senior partner"
+    assert not coach.search(give_mentorship), "mentoring OTHERS is not coachability"
+    assert lead.search(give_mentorship), "mentoring others should still score as leadership"
+    assert coach.search(receive_mentorship), "being mentored BY someone should still match"

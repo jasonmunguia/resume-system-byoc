@@ -174,6 +174,36 @@ failure a reader cannot catch by reading. Never round a thin corpus up.
 - Always ship the corpus list and the rejection list with the table. A number
   without provenance can't be audited.
 
+## Optional output — deriving a job-cycle view
+
+The ranked trait table says WHICH qualifications to prove. It doesn't say WHAT
+KIND of activity proves each one — a different, complementary view: a
+hand-curated sequence of 5–7 stages that most postings in a family
+functionally imply, even though no single posting states it as a checklist. A
+trait like "Problem solving" is an abstraction; a stage phrased as "diagnose
+the real problem, not what you're told is wrong" is concrete enough to
+recognize in your own experience.
+
+**How to derive one per family:**
+
+1. Read the family's duty corpus. Look for a recurring functional sequence,
+   not identical wording.
+2. Name each stage as a verb phrase ("Diagnose the real problem," not
+   "Problem diagnosis") — something you *did*.
+3. One or two sentences per stage on what it's *for*.
+4. Map each stage to the ONE trait it most directly evidences. A stage maps to
+   a trait, not the reverse.
+5. **Hand-pick 1–2 real, verbatim quotes per stage — do not regex-select
+   them.** Detecting whether a line contains a concept is hard enough with
+   regex (the lexicon below needed four rounds of false-positive/negative
+   fixes for exactly that, easier, problem); detecting which stage of a
+   multi-step process a line describes is a harder problem regex is worse at.
+   Curate by reading.
+6. A trait running through every stage rather than belonging to one (e.g.
+   "Coachability" — being mentored isn't a discrete phase) files as the
+   cycle's **undercurrent**, not a numbered stage.
+7. No code changes needed to render a new family's cycle — only the data.
+
 ## Qualification lexicon
 
 Concept → phrasings to match (case-insensitive regex).

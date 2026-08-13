@@ -114,10 +114,103 @@ def chart(rep, cover, top=16):
     L += block("trait", "Traits / Qualifications to prove — one per bullet",
                "⭐ = anchor trait (context/anchors.json) · format: (demand, your coverage) · "
                "rule: their noun, your number")
+    L += job_cycle_block(fam, cover)
     L += block("domain", "Domain signal — prove in a bullet, this family only", "")
     L += block("tool", "Hard qualifications — Skills line only",
                "Earns a bullet only if the bullet shows it doing something (HHH p.24)")
     return "\n".join(L)
+
+
+# The trait table says WHICH qualifications to prove; this says WHAT KIND OF
+# ACTIVITY actually proves each one — synthesized from the corpus's own duty
+# language (not the qualifications section), so an unfamiliar reader knows
+# what to go looking for in their own experience. Curated per family: the
+# stages that structure one job don't necessarily structure another, so this
+# is opt-in per family rather than auto-derived from duty text — auto-deriving
+# "which of six stages does this duty line belong to" reliably from regex
+# would be fragile in a way hand-picking six real examples isn't.
+JOB_CYCLES = {
+    "R1": {
+        "title": "The job, six stages — what to go looking for in your own experience",
+        "stages": [
+            ("Diagnose the real problem",
+             ("Not what you're told is wrong — what's actually wrong. The step "
+              "before analysis, and the one most resumes skip straight past."),
+             "Problem solving",
+             ["McKinsey: \"Helping to uncover the true challenges behind a client's strategy\"",
+              "Mastercard: \"Support problem solving by structuring challenges and exploring solutions\""]),
+            ("Gather and analyze data",
+             ("The evidence-gathering phase — pulling together what's actually "
+              "true before recommending anything."),
+             "Analytical skills",
+             ["Kearney: \"gathering and analyzing data and conducting competitor assessment studies\"",
+              "Campbell Soup: \"capturing business requirements and translating them into technical specifications\""]),
+            ("Turn analysis into a recommendation or plan",
+             ("The synthesis step — evidence alone isn't a deliverable until "
+              "it's shaped into something someone can act on."),
+             "Written documentation",
+             ["McKinsey: \"Creating actionable plans that drive real change\"",
+              "Kearney: \"Support in the creation of recommendations and implement co-created solutions\""]),
+            ("Present it to stakeholders",
+             ("The plan doesn't matter until someone with authority to act on "
+              "it understands and believes it."),
+             "Communication (written & verbal)",
+             ["Mastercard: \"Create clear and compelling presentations for internal teams and clients\"",
+              "NICE: \"Support project kickoffs, status reviews, and stakeholder communications\""]),
+            ("Coordinate across functions to implement it",
+             ("Recommendations die at the handoff. This is the step that "
+              "makes them survive contact with a different team's priorities."),
+             "Cross-functional partnering",
+             ["Submittable: \"Partner with G&A, People Ops, IT, and Accounting to identify and develop solutions\"",
+              "Mastercard: \"Collaborate with colleagues across different areas of the organization\""]),
+            ("Track whether it worked",
+             ("The step that separates a real result from a plausible-sounding "
+              "one — did the number actually move?"),
+             "Metrics / KPIs",
+             ["Submittable: \"Track the impact of your work — time saved, errors reduced, processes streamlined\""]),
+        ],
+        "undercurrent": (
+            ("Running underneath all six: you're doing this while being actively "
+             "developed, not operating solo — these are internships, not "
+             "independent-contributor roles."),
+            "Coachability",
+            ["Kearney: \"a dedicated mentor who will provide guidance throughout your internship\"",
+             "Mastercard: \"Grow by receiving hands-on mentorship from an experienced management team\""],
+        ),
+    },
+}
+
+
+def job_cycle_block(fam, cover):
+    spec = JOB_CYCLES.get(fam)
+    if not spec:
+        # Silent absence looks like "there's nothing here" rather than "this
+        # hasn't been built yet." Say so, and point at the recipe.
+        return ["", (f"*(No six-stage job-cycle curated yet for **{fam}** — see "
+                     f"\"Deriving a job cycle for a new family\" in "
+                     f"references/qualification-finder.md to build one from this "
+                     f"family's duty corpus.)*"), ""]
+    out = ["", f"**{spec['title']}**", "",
+           ("*Each stage names the trait it evidences and how covered you are on it "
+            "right now — use this to see what KIND of story fills a gap, not just "
+            "which label to chase.*"), ""]
+    for i, (name, para, trait, quotes) in enumerate(spec["stages"], 1):
+        c = cover.get(trait, 0)
+        state = "**GAP**" if c == 0 else f"×{c}"
+        out.append(f"{i}. **{name}** — *{trait} ({state})*")
+        out.append(f"   {para}")
+        for q in quotes:
+            out.append(f"   > {q}")
+        out.append("")
+    para, trait, quotes = spec["undercurrent"]
+    c = cover.get(trait, 0)
+    state = "**GAP**" if c == 0 else f"×{c}"
+    out.append(f"**Undercurrent — {trait} ({state})**")
+    out.append(f"   {para}")
+    for q in quotes:
+        out.append(f"   > {q}")
+    out.append("")
+    return out
 
 
 if __name__ == "__main__":
