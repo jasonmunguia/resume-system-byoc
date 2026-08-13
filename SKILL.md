@@ -62,6 +62,35 @@ Applied consistently across stages 2–4; each is defined in its sub-skill.
 | **Interview Defensibility** | Does every claim survive "tell me more"? | bullet-creator |
 | **Role Narrative** | Does the whole page read as this candidate? | resume-auditor |
 
+## The Inception Method
+
+The point of measuring what a role does — both the qualification table and the
+job-cycle view — is so a bullet can read like you've already been doing that
+exact job. That's the inception method, and it operates at two levels stage 1
+supplies raw material for:
+
+- **Word-level** — for a single trait, mirror the employer's *action*
+  vocabulary, never their *trait* vocabulary. Their noun, your number. *"Scoped
+  engagements in new industries"* borrows their verb-noun for something you
+  actually did; *"demonstrated stakeholder management"* borrows their label for
+  a trait, which is keyword stuffing, not inception. See `bullet-creator.md`,
+  "Mirror concepts, not labels."
+- **Sequence-level** — for a whole role, mirror the employer's *functional
+  flow*, not just isolated words. The job-cycle view (above) exists because
+  knowing a role screens for "Problem solving" doesn't tell you what a
+  problem-solving *story* looks like; knowing the role's actual sequence
+  (diagnose → analyze → recommend → present → coordinate → track) does. A
+  bullet — or better, a coherent set of bullets — that follows a comparable
+  sequence reads as someone who's done the whole job, not someone who hit five
+  keywords in one sentence. See "Optional output — deriving a job-cycle view"
+  in `qualification-finder.md`.
+
+Both levels use the same underlying material (the corpus's duty language) at
+different resolutions — one word, one sentence at a time, versus the shape of
+the whole role. Use word-level inception by default; reach for sequence-level
+when a single bullet, or a company's whole bullet set, needs to prove you can
+run the *entire* process, not just execute one step of it well.
+
 ## Collaboration contract
 
 Work **one experience at a time**. Ask for missing facts rather than writing

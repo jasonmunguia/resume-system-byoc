@@ -176,11 +176,15 @@ interviews that produced a pivot, **the accomplishment already mirrors it** —
 adding *"demonstrated user empathy and product sense"* weakens it. Show, don't
 label.
 
-> 📌 **Reconciling this with inception** (`qualification-finder.md`): mirror
-> their **action vocabulary**, never their **trait vocabulary**. *"Scoped
-> engagements in new industries"* borrows their verb-noun for something you
-> actually did. *"Demonstrated stakeholder management"* borrows their label for a
-> trait — that is keyword stuffing. Their noun, your number; never their adjective.
+> 📌 **This is word-level inception** — see "The Inception Method" in
+> `SKILL.md` for the full two-level picture. Mirror their **action
+> vocabulary**, never their **trait vocabulary**. *"Scoped engagements in new
+> industries"* borrows their verb-noun for something you actually did.
+> *"Demonstrated stakeholder management"* borrows their label for a trait —
+> that is keyword stuffing. Their noun, your number; never their adjective.
+> The other half — matching a role's *functional sequence*, not just its
+> vocabulary — is sequence-level inception, in `qualification-finder.md`'s
+> job-cycle section.
 
 **Translate terminology only when it describes the same thing.** *"Product
 refinement memo"* may genuinely be product requirements, customer requirements,

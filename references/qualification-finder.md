@@ -77,6 +77,13 @@ rendered by `scripts/chart.py`'s `job_cycle_block()` when a family has an entry
 in `JOB_CYCLES`. R1 (Strategy/Business Analyst) has one; other families don't
 yet.
 
+This is **sequence-level inception** — see "The Inception Method" in
+`SKILL.md`. Word-level inception (mirroring a single employer's noun with your
+own number, in `bullet-creator.md`) makes one bullet's vocabulary read right.
+This makes a bullet's or a company's whole *shape* read right — proof that you
+ran a comparable process, not just that you know the right words for one step
+of it.
+
 A job cycle is a hand-curated sequence of 5–7 stages that most postings in a
 family functionally imply, even though no single posting states it as a
 checklist. It exists because a trait like "Problem solving" or "Cross-functional

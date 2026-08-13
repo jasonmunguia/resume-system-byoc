@@ -422,12 +422,25 @@ you? Who decided? Why did it work? What alternatives were considered?*
 Pick the metric that best proves the *supplied qualification* — do not reflexively
 prefer revenue. Commercial · Operations · Product · Technical · People/scale.
 
-## Mirror concepts, not labels
+## The Inception Method
 
-**Mirror their action vocabulary, never their trait vocabulary.**
-*"Scoped engagements in new industries"* — their verb-noun for something you did ✅
-*"Demonstrated stakeholder management"* — their label for a trait ❌
-**Their noun, your number; never their adjective.**
+The point of measuring what a role does — trait table AND job-cycle view — is
+so a bullet reads like you've already been doing that exact job. Two levels:
+
+- **Word-level** — mirror the employer's action vocabulary for one trait,
+  never their trait vocabulary. *"Scoped engagements in new industries"* —
+  their verb-noun for something you did ✅. *"Demonstrated stakeholder
+  management"* — their label for a trait, keyword stuffing ❌. Their noun,
+  your number; never their adjective.
+- **Sequence-level** — mirror the role's whole functional flow (the job-cycle
+  view above), not just isolated words. Knowing a role screens for "Problem
+  solving" doesn't tell you what a problem-solving story looks like; knowing
+  the role's real sequence (diagnose → analyze → recommend → present →
+  coordinate → track) does. A bullet, or a company's whole bullet set, that
+  follows a comparable sequence reads as someone who ran the entire process,
+  not someone who hit one keyword.
+
+## Mirror concepts, not labels
 
 Translate terminology only when it describes the same thing. Determine what a
 *"product refinement memo"* actually contained before renaming it a *spec*.
