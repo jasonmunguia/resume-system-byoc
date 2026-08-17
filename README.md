@@ -3,6 +3,9 @@
 A Claude Code skill that builds a role-targeted resume **backward from employer
 demand** instead of forward from memory.
 
+Built by [Jason Munguia](https://github.com/jasonmunguia). Apache-2.0 — free to use, fork and build on, **with credit**.
+
+
 Memory optimizes for what you remember doing. Screeners select on what they were
 told to look for. Those diverge, and the gap is invisible without counting — in
 this system's first real run, a resume spent **8 of 14 bullets on sales/GTM
